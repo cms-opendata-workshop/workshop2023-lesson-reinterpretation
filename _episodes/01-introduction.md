@@ -12,7 +12,7 @@ keypoints:
 
 ## What is reinterpretation?
 
-LHC is building a tremendous physics legacy through the vastly many analyses performed by the experiments. CMS alone has published [more than a thousand physics analyses]([https://arxiv.org/abs/2205.09597](https://cms-results-search.web.cern.ch/)https://cms-results-search.web.cern.ch/). These analyses focus on a large spectrum of physics goals ranging from standard model measurements to searches for new physics. Each of these analyses investigate well-defined final states that  characterize predicted signatures from a physics model or a set of physics models.  The physicists who originally design and perform an analysis usually interpret the analysis result based on one or more physics models.  
+LHC is building a tremendous physics legacy through the vastly many analyses performed by the experiments. CMS alone has published [more than a thousand physics analyses](https://cms-results-search.web.cern.ch/). These analyses focus on a large spectrum of physics goals ranging from standard model measurements to searches for new physics. Each of these analyses investigate well-defined final states that  characterize predicted signatures from a physics model or a set of physics models.  The physicists who originally design and perform an analysis usually interpret the analysis result based on one or more physics models.  
 
 > ## Experimental result vs. interpretation
 >
@@ -34,11 +34,24 @@ But whichever way we choose, reinterpretation requires rerunning the analysis co
 
 ### Exact reinterpretation
 
-We employ exact reinterpretation when final state explored by the analysis matches that predicted by our physics model of interest (perhaps give an example).
-Exact reinterpretation uses the analysis as it is.  This means, the analysis selection and all other details stay the same.  Consequently
+We employ exact reinterpretation when final state explored by the analysis matches that predicted by our physics model of interest (**perhaps give an example**).
+Exact reinterpretation uses the analysis as it is.  This means, the analysis selection and all other details stay the same as in the original study.  Consequently, the analysis results (e.g. data counts, background estimations, uncertainties) can be directly taken from the experimental publication.
+
+The missing piece is the signal prediction, and here is how we can do it:
+1. **Obtain Monte Carlo (MC) samples for the signal model**: Generate events and preferably apply some sort of detector simulation. 
+2. **Obtain a valid analysis code**: Sometimes analysis code that can run on the format of events you have, can be publicly available. If not, you would have to re-write and validate it yourself. Write at least the signal selection as consistently with the original analysis as possible.
+3. (If you had to write the code) **Validate the analysis code:** Make sure that the code is correct by running it over signals used by the original analysis and comparing your signal predictions, e.g. counts, cutflows, with those provided by the analysis team.  This is the most tricky part!
+4. **Run the code on signal events:** Run the code to obtain predictions for input to the statistical model.
+
+Exact reinterpretation studies do not need to rerun the analysis over data or backgrounds, but only run on signals.  Therefore usually a simplified public fast simulation package, such as [Delphes](https://cp3.irmp.ucl.ac.be/projects/delphes) is used for simulating the detector performance.  Consequently, analyses are also written in a more simplified manner, e.g. with simpler object definitions. 
+
+This is the most commonly used reinterpretation method up to now.  But perhaps it is time we get more creative! 
 
 ### Modified reinterpretation
 
+What if you have a physics model whose final state is not explored by the existing analyses? 
+
+You may of course design a brand new analysis directly targeting your signal, run it over data and full background and signal MC. But developing a complete analysis from scratch with a sound methodology is time consuming and far from straightforward.  Another option could be to take an analysis that explores a final state as close as possible to your signal prediction, and 
 
 Reinterpretation usually consists of 
 
