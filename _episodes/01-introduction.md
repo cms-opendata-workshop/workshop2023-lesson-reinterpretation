@@ -19,13 +19,28 @@ LHC is building a tremendous physics legacy through the vastly many analyses per
 > **Results** and **interpretation** are two terms that are sometimes used interchangeably, even though they refer to two very distinct concepts. Let us first clarify those:
 >
 > * An **experimental result** is the empirical outcome of the experiment, the measurement of some physical quantity, such as counts, cross sections, signal strengths, masses, etc.
-> * **Interpretation** is the comparison of experimental results with the expectations of a given a theoretical model.  
+> * **Interpretation** is the comparison of experimental results with the expectations of a given a theoretical model.  We use a **statistical model** that relates to observed quantities in data (e.g.. counts) to the theoretical model parameters (e.g. BSM particle masses, cross sectons). Take the simplest case of a counting experiment with observes data counts **D** and estimated background **B** after the analysis selection:  interpretation first calculates the signal counts **S** predicted by the model after the analysis selection, then checks whether observed data **D** are more consistent with the background hypothesis **B** or the signal plus background hypothesis **S + B**.  From here, we can assess if the analysis has discovered or excluded the signal, or if it is not sensitive enough to observe the signal.   
 >
 > {: .source}
 {: .callout}
 
-However time and resources are limited, and the priority in an analysis is to produce the result. Therefore, the analysis team only interprets using a limited number of models, or limited subsets of parameter spaces to demonstrate the analysis' usefulness. Yet, the analysis may be sensitive to many other theoretical models not addressed by the original study.  Moreoever, it would be a waste to not interpret an analysis produced in many years by such great effort, on as many models as possible.  The effort of reusing information from an analysis to interpret it in terms of theoretical models not addressed by the original analysis, is called **reinterpretation**. 
+However time and resources are limited, and the priority in an analysis is to produce the result. Therefore, the analysis team only interprets using a limited number of models, or limited subsets of parameter spaces to demonstrate the analysis' usefulness. Yet, the analysis may be sensitive to many other theoretical models not addressed by the original study.  Moreoever, it would be a waste to not interpret an analysis produced in many years by such great effort, across as many models as possible.  Reusing information from an analysis to interpret it in terms of physics models not addressed by the original analysis, is called **reinterpretation**. Reinterpretation is typically done by phenomenologists to see the impact of experimental results on their favorite physics model.
 
+
+## Types of reinterpretation
+
+We can reinterpret an analysis in different ways. We can either reinterpret an analysis as it is, or we can modify the analysis selection.
+But whichever way we choose, reinterpretation requires rerunning the analysis code on events, and most of the times, recoding the analysis from scratch to some extent of accuracy! 
+
+### Exact reinterpretation
+
+We employ exact reinterpretation when final state explored by the analysis matches that predicted by our physics model of interest (perhaps give an example).
+Exact reinterpretation uses the analysis as it is.  This means, the analysis selection and all other details stay the same.  Consequently
+
+### Modified reinterpretation
+
+
+Reinterpretation usually consists of 
 
 **Reinterpretation** consists of recoding a published analysis from scratch for the purpose of interpreting it in terms of other physics models not interpreted in the original publication.
 Reinterpretation is usually done by phenomenologists to see the impact of experimental results on their favorite physics model.
