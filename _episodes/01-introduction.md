@@ -43,7 +43,9 @@ The missing piece is the signal prediction, and here is how we can do it:
 3. (If you had to write the code) **Validate the analysis code:** Make sure that the code is correct by running it over signals used by the original analysis and comparing your signal predictions, e.g. counts, cutflows, with those provided by the analysis team.  This is the most tricky part!
 4. **Run the code on signal events:** Run the code to obtain predictions for input to the statistical model.
 
-Exact reinterpretation studies do not need to rerun the analysis over data or backgrounds, but only run on signals.  Therefore usually a simplified public fast simulation package, such as [Delphes](https://cp3.irmp.ucl.ac.be/projects/delphes) is used for simulating the detector performance.  Consequently, analyses are also written in a more simplified manner, e.g. with simpler object definitions. 
+Exact reinterpretation studies do not need to rerun the analysis over data or backgrounds, but only run on signals.  Therefore usually a simplified public fast simulation package, such as [Delphes](https://cp3.irmp.ucl.ac.be/projects/delphes) is used for simulating the detector performance.  Consequently, analyses are also written in a more simplified manner, e.g. with simpler object definitions. MA, CM.
+
+There is also the [RECAST framework](https://iris-hep.org/projects/recast.html) that runs the original analysis chain given signal events at LHE format.
 
 This is the most commonly used reinterpretation method up to now.  But perhaps it is time we get more creative! 
 
@@ -51,19 +53,13 @@ This is the most commonly used reinterpretation method up to now.  But perhaps i
 
 What if you have a physics model whose final state is not explored by the existing analyses? 
 
-You may of course design a brand new analysis directly targeting your signal, run it over data and full background and signal MC. But developing a complete analysis from scratch with a sound methodology is time consuming and far from straightforward.  Another option could be to take an analysis that explores a final state as close as possible to your signal prediction, and 
+You may of course design a brand new analysis directly targeting your signal, run it over data and full background and signal MC. But developing a complete analysis from scratch with a sound methodology is time consuming and far from straightforward.  Another less daunting option could be to take an analysis that explores a final state as close as possible to your signal prediction, and slightly modify its selection criteria to get optimal sensitivity for your model.
+This option still requires processing the full set of data, background and signal samples. Yet it provides a more secure approach, as one can compare the consistency of event yield predictions between the original and the modified analyses to avoid errors.
 
-Reinterpretation usually consists of 
-
-**Reinterpretation** consists of recoding a published analysis from scratch for the purpose of interpreting it in terms of other physics models not interpreted in the original publication.
-Reinterpretation is usually done by phenomenologists to see the impact of experimental results on their favorite physics model.
-* An analysis code is rewritten outside the experimental frameworks.
-* Analysis recoding is done less accurately compared to the original experimental code, since detector information does not exist in full detail in public simulation tools.
-* Public tools exist for rewriting analyses: CheckMate, MadAnalysis, Rivet, … now ADL/CutLang.
-* Monte Carlo simulated events for the signal models are produced.
-* Analysis code is run on the events to obtain predicted signal counts / efficiencies.
-* Predicted signal counts are used together with observed data and background estimation results
-from the experimental publication to calculate limits.
+For such modified reinterpretation, we need:
+* **The full set of collision data:** Provided as open data.
+* **Background and signal samples:** MC for most SM processes and some BSM processes are available as open data samples. Other signal processes can be produced as in the case for exact reinterpretation.
+* **Analysis code:** We need analysis code that can process real collision data and MC samples.
 
 {% include links.md %}
 
