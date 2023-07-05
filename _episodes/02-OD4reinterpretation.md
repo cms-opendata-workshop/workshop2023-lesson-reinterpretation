@@ -16,7 +16,7 @@ How can we use open data for reinterpretation?
 
 ### Open data for exact reinterpretation
 
-Let's remember that exact reinterpretation only requires signal events.  Open data consists (will consist) of plenty of SM and BSM MC samples.  There is a chance that our signal of interest is already available in open data.
+Let's remember that exact reinterpretation only requires signal events.  Open data consists (will consist) of plenty of SM and BSM MC samples with CMS detector simulation.  There is a chance that our signal of interest is already available in open data.
 
 > ## Where is the need?
 >
@@ -35,11 +35,23 @@ Let's remember that exact reinterpretation only requires signal events.  Open da
 
 ...
 
-## Analyzing open data for reinterpretation
+## Reimplementing analyses for reinterpretation with open data
 
-In many cases, we need to implement the analysis code for reintepretation.  We have several options:
 
-* Use the code from the analysis team: 
+In most cases, we need to reimplement the analysis code for reintepretation. We may either start from 
+
+* Use the code from the analysis team: Some analysis teams provide their analysis code and framework.
+  * **Pros:** Access to complete analysis in full detail.
+  * **Cons:** Usually hard to decipher 
+Input data format may not be consistent (many analyses run on custom-made ntuples). 
+
+* Write your own code:
+  * **Pros:** You know exactly what is in the code.  Easy to manipulate.
+  * **Cons:**  
+
+
+
+
 
 {% include links.md %}
 
