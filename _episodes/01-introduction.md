@@ -61,5 +61,20 @@ For such modified reinterpretation, we need:
 * **Background and signal samples:** MC for most SM processes and some BSM processes are available as open data samples. Other signal processes can be produced as in the case for exact reinterpretation.
 * **Analysis code:** We need analysis code that can process real collision data and MC samples.
 
+> ## What can we modify in an analysis?
+>
+> What kinds of small modifications can we make in an analysis to optimize its sensitivity to a different signal model? 
+>
+> > ## Solution
+> >
+> > * Modify / add some cuts in the event selection.
+> > * If there is a machine learning model for signal discrimination / extraction, retrain it for our signal model.
+> > * Change binning of the analysis variable.
+> > * Mofify object selections, e.g. raise pT, use tighter isolation, ...
+> > * ...
+> >
+> {: .solution}
+{: .challenge}
+
 {% include links.md %}
 
