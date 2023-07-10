@@ -26,6 +26,7 @@ LHC is building a tremendous physics legacy through the vastly many analyses per
 
 However time and resources are limited, and the priority in an analysis is to produce the result. Therefore, the analysis team only interprets using a limited number of models, or limited subsets of parameter spaces to demonstrate the analysis' usefulness. Yet, the analysis may be sensitive to many other theoretical models not addressed by the original study.  Moreoever, it would be a waste to not interpret an analysis produced in many years by such great effort, across as many models as possible.  Reusing information from an analysis to interpret it in terms of physics models not addressed by the original analysis, is called **reinterpretation**. Reinterpretation is typically done by phenomenologists to see the impact of experimental results on their favorite physics model.
 
+There exists a dedicated [LHC Reinterpretation Forum](https://twiki.cern.ch/twiki/bin/view/LHCPhysics/InterpretingLHCresults) aiming to provide a platform for continued discussion of topics related to the BSM (re)interpretation of LHC data, including the development of the necessary public and related infrastructures.
 
 ## Types of reinterpretation
 
