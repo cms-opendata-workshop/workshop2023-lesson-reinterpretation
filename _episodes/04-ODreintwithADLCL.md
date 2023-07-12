@@ -1,13 +1,21 @@
 ---
-title: "Open data reinterpretation with ADL/CutLang"
+title: "Open data reinterpretation with ADL/CutLang: ttbar to vector-like T quark"
 teaching: 0
-exercises: 0
+exercises: 50
 questions:
-- "Key question (FIXME)"
+- "How can we do exact reinterpretation with open data and ADL/CutLang?"
+- "How can we do optimized reinterpretation with open data and ADL/CutLang?"
+- "How can we add analysis definitions to the ADL file?"
+- "How can we optimize an analysis, find discriminating variables? 
+- "What information we help us assess the adequacy of the analysis?"
 objectives:
-- "First learning objective. (FIXME)"
+- "Perform exact interpretation of a ttbar cross section analysis in a vector-like T quark signal using open data and ADL/CutLang."
+- "Optimize the ttbar analysis to enhance sensitivity to the vector-like T quark signal using open data and ADL/CutLang."
+- "Learn how to define new objects, new variables, new event selection cuts and new histograms in ADL."
+- "Learn how to plot variable distributions and cutflows for different processes, weighted to the expected number of events at the LHC."
 keypoints:
-- "First key point. Brief Answer to questions. (FIXME)"
+- "The ADL/CutLang allows practical and transparent implementation and optimization of an analysis for reinterpretation purposes using open data."
+- "Optimized reinterpretation involves finding variables that discriminate signal from background; updating the event selection with cuts based on these discriminating variables; checking cutflows, variable distributions at various stages of the selection for high signal to background ratios; and finding a good final variable with the best signal to background ratio to express the analysis result."
 ---
 
 ## Getting prepared for this episode
@@ -95,7 +103,7 @@ Overview the code and execute the cells. You will see histograms appearing.
 DISCUSS: Take a look at the top candidate mass distributions:
 * Can this variable discriminate the signal from background?
 * How does the signal / background ratio look?  Do you think this selection is sensitive to our signal?
-Now take a look at the `cutflow` histograms:
+Now take a look at the `cutflow` histograms.  These are generated automatically by CutLang.
 * Is there any difference in event reduction rate between the signal and background?
 ~~~
 
@@ -199,10 +207,41 @@ The complete ADL file after this step can be seen [here](https://raw.githubuserc
 Once again, run this ADL file and check the new histograms in Jupyter.  
 
 ~~~
-DISCUSSION: The histograms after the last cut show the candidate variables for presenting the analysis result.  Which one would you pick?
+DISCUSSION:
+* The histograms after the last cut show the candidate variables for presenting the analysis result.  Which one would you pick?
+* Check the `cutflow` histogram in the `optforvlqreint` region. Do our cuts do a decent job in reducing the background while keeping as much signal as possible?
 ~~~
 
-### 
+### What changed along the way?
+
+A unique strength of ADL is that it allows to straightforwardly document many versions of an analysis as you like, and make easy comparisons between different versions and track changes.  We can do this even with a simple `diff <oldversion.adl> <newversion.adl>` command.
+
+Let's compare ADL files from the (original ttbar analysis with the optimized ttbartovlq analysis to easily overview what has changed along the way:
+~~~
+wget https://raw.githubusercontent.com/ADL4HEP/ADLAnalysisDrafts/main/CMSODWS23-ttbartovlq/ttbartovlq_step1.adl -P compareadls/
+wget https://raw.githubusercontent.com/ADL4HEP/ADLAnalysisDrafts/main/CMSODWS23-ttbartovlq/ttbartovlq_step3.adl -P compareadls/
+diff compareadls/ttbartovlq_step1.adl compareadls/ttbartovlq_step3.adl 
+~~~
+{: .language-bash}
+(we downloaded ADL the files in order to not overwrite yours - you can also compare your own versions if you like)
+
+We are developing dedicated tools to provide more informative comparisons.
+
+### Results in full glory: signal, background and data
+
+Now that we have established a selection, it is time to see the performance and distributions for the full set of collision data, background Monte Carlo and signal Monte Carlo events.  It is also good to check the performance for multiple signal benchmarks (with masses 700, 800, 1200 in our case).
+
+To save time, we already ran all these samples with the latest ADL file. Download the output files under the `/src/` directory and unpack:  
+
+~~~
+wget ....
+tar -xzvf ttbartovlq-results.tgz
+~~~
+The set of samples processed, their cross sections and unskimmed number of events are listed in the file `ttbartovlq-results/samples.txt`.
+
+Go to Jupyter again, and this time open the notebook ``.  This notebook is very similar to the previous one.  But this time, we plot all processes together, once again, with the correct weights.  Run the notebook and enjoy observing the final histograms.
+
+{: .language-bash}
 
 {% include links.md %}
 
