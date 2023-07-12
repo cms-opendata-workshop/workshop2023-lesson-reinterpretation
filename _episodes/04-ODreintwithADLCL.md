@@ -6,7 +6,7 @@ questions:
 - "How can we do exact reinterpretation with open data and ADL/CutLang?"
 - "How can we do optimized reinterpretation with open data and ADL/CutLang?"
 - "How can we add analysis definitions to the ADL file?"
-- "How can we optimize an analysis, find discriminating variables? 
+- "How can we optimize an analysis, find discriminating variables?" 
 - "What information we help us assess the adequacy of the analysis?"
 objectives:
 - "Perform exact interpretation of a ttbar cross section analysis in a vector-like T quark signal using open data and ADL/CutLang."
