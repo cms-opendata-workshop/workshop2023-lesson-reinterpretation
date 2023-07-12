@@ -44,7 +44,7 @@ The POET ntuples have the prefix address: `root://eospublic.cern.ch//eos/opendat
 Next comes the implementation of the analysis.  We already have a version in ADL.  Let's download it to the docker container:
 
 ~~~
-wget https://raw.githubusercontent.com/ADL4HEP/ADLAnalysisDrafts/main/CMS-TOP-16-006/CMS-TOP-16-001_OD_step1.adl
+wget https://raw.githubusercontent.com/ADL4HEP/ADLAnalysisDrafts/main/CMSODWS23-ttbartovlq/ttbartovlq_step1.adl
 ~~~
 {: .language-bash}
 
@@ -60,29 +60,81 @@ wget https://raw.githubusercontent.com/ADL4HEP/ADLAnalysisDrafts/main/CMS-TOP-16
 Now let's run the ADL file using CutLang over the Tmass = 800 GeV signal for 30000 events:
 
 ~~~
-CLA root://eospublic.cern.ch//eos/opendata/cms/derived-data/POET/23-Jul-22/RunIIFall15MiniAODv2_TprimeTprime_M-800_TuneCUETP8M1_13TeV-madgraph-pythia8_flat.root POET -i CMS-TOP-16-001_OD_step1.adl -e 30000
-mv histoOut-ttbarljets.root histoOut-ttbarljets_RunIIFall15MiniAODv2_TprimeTprime_M-800_TuneCUETP8M1_13TeV-madgraph-pythia8_flat.root
+CLA root://eospublic.cern.ch//eos/opendata/cms/derived-data/POET/23-Jul-22/RunIIFall15MiniAODv2_TprimeTprime_M-800_TuneCUETP8M1_13TeV-madgraph-pythia8_flat.root POET -i ttbartovlq_step1.adl -e 30000
+mv histoOut-ttbartovlq_step1.root histoOut-ttbartovlq_TT800.root
 ~~~
 {: .language-bash}
-
-
-
-~~~
-CLA root://eospublic.cern.ch//eos/opendata/cms/derived-data/POET/23-Jul-22/RunIIFall15MiniAODv2_TprimeTprime_M-800_TuneCUETP8M1_13TeV-madgraph-pythia8_flat.root POET -i CMS-TOP-16-001_OD_step1.adl -e 30000
-mv histoOut-ttbarljets.root histoOut-ttbarljets_RunIIFall15MiniAODv2_TprimeTprime_M-800_TuneCUETP8M1_13TeV-madgraph-pythia8_flat.root
-~~~
-{: .language-bash}
-
 
 Look at the text output and the cutflow shown there.  Which cuts reduce the events most?
 
+Now let's compare the top candidate mass from the signal with that of the `ttbar` process, which, in this case becomes our dominant background.
+Event yields for various processes are usually provided with the analysis publication or in HepData, but in this case, we will get them ourselves.  We can run the above ADL file on some ttbar events:
+~~~
+CLA root://eospublic.cern.ch//eos/opendata/cms/derived-data/POET/23-Jul-22/RunIIFall15MiniAODv2_TprimeTprime_M-800_TuneCUETP8M1_13TeV-madgraph-pythia8_flat.root POET -i ttbartovlq_step1.adl -e 400000
+mv histoOut-ttbartovlq_step1.root histoOut-ttbartovlq_ttjets.root
+~~~
+{: .language-bash}
+Or, to save time you can download the `ttbar` output file as
+
+~~~
+wget .....
+~~~
+{: .language-bash}
+
+Next, let's go to `Jupyter` and open a notebook to read the output `ROOT` files and draw histograms.
+Assuming you are still in the default `src/` directory of the docker container, go to the `../CutLang/binder` directory and start Jupyter:
+~~~
+cd ../CutLang/binder/
+CLA_Jupyter lab
+~~~
+(remember that you need to copy the url address at the bottom to your browser).
+Select the notebook `ROOTweightedcomparison.ipynb`.  This notebook retrieves the set of histograms you select and plots them after applying weights that normalize them to cross section times luminosity.  This means, the events in the histogram correspond to the event one would expect at the LHC.
+Overview the code and execute the cells. You will see histograms appearing.
+
+~~~
+DISCUSS: Take a look at the top candidate mass distributions:
+* Can this variable discriminate the signal from background?
+* How does the signal / background ratio look?  Do you think this selection is sensitive to our signal?
+Now take a look at the `cutflow` histograms:
+* Is there any difference in event reduction rate between the signal and background?
+~~~
 
 
 ## Optimized reinterpretation
 
+We see that the ttbar analysis is not the best way to look for vector-like T quarks.  Now let's try to improve the selection to increase analysis sensitivity.
+To devise an improved selection, we should guess some variables with discriminating power and plot them for signal and background.
 
+~~~
+DISCUSS: What could be some signal discriminating variables?
+~~~
 
+Main difference is that the signal events have a larger object multiplicity and decay products with bigger boost.  This consequentally leads to larger transverse activity, both visible and invisible.
+Here are some ideas for discriminating variables.  Please add histograms for these to the ADL file, under the `fourjettwob` region:
+* Top quarks coming from T decays may have a large Lorentz boost, top candidate pT could be a discriminant.  
+  * histogram name: `hpttop`; fixed bins: `20, 50, 1550`
+  * histogram name: `h2pttop`: variable bins: `50 100 150 200 300 400 500 600 700 800 1000 1500 2000`
+* Signal should have higher jet multiplicity.  Add number of jets.
+  * histogram name: `hnjets` ; fixed bins: `20, 0, 20`
+* pTs of the first 3 jets can be relatively higher.  Add these three as separate histograms:
+  * histogram names: `hj1pT`, `hj2pT`, `hj3pT` ; fixed bins: 20, 50, 1050
+* Signal can have larger MET.  IMPORTANT: The variable to use for MET in ADL is simply `MET`.
+  * histogram name: `hmet` ; variable bins: `50 75 100 150 200 300 500 700 1000 1300`
+* Signal can have larger visible transverse activity.  
 
+~~~
+  histo hpttop , "top cand. pT (GeV)", 20, 50, 1550, pT(topcands[0])
+  histo h2pttop , "top cand. pT (GeV)", 50 100 150 200 300 400 500 600 700 800 1000 1500 2000, pT(to
+pcands[0])
+  histo hnjets , "number of jets", 20, 0, 20, size(jets)
+  histo hj1pT , "jet 1 pT (GeV)", 20, 50, 1050, corrpT(jets[0])
+  histo hj2pT , "jet 2 pT (GeV)", 20, 50, 1050, corrpT(jets[1])
+  histo hj3pT , "jet 3 pT (GeV)", 20, 50, 1050, corrpT(jets[2])
+  histo hmet , "MET (GeV)", 50 75 100 150 200 300 500 700 1000 1300, MET
+  histo hST, "ST (GeV)", 500 600 700 800 1000 1125 1500 1700 2000 2500 3000 4500, ST
+  histo hnak8, "number of AK8 jets", 8, 0, 8, size(AK8jets)
+~~~
+{: .solution}
 
 {% include links.md %}
 
