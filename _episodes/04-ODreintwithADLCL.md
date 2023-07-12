@@ -102,6 +102,8 @@ Now take a look at the `cutflow` histograms:
 
 ## Optimized reinterpretation
 
+### Finding and adding discriminating variables
+
 We see that the ttbar analysis is not the best way to look for vector-like T quarks.  Now let's try to improve the selection to increase analysis sensitivity.
 To devise an improved selection, we should guess some variables with discriminating power and plot them for signal and background.
 
@@ -117,10 +119,26 @@ Here are some ideas for discriminating variables.  Please add histograms for the
 * Signal should have higher jet multiplicity.  Add number of jets.
   * histogram name: `hnjets` ; fixed bins: `20, 0, 20`
 * pTs of the first 3 jets can be relatively higher.  Add these three as separate histograms:
-  * histogram names: `hj1pT`, `hj2pT`, `hj3pT` ; fixed bins: 20, 50, 1050
+  * histogram names: `hj1pT`, `hj2pT`, `hj3pT` ; fixed bins: `20, 50, 1050`
 * Signal can have larger MET.  IMPORTANT: The variable to use for MET in ADL is simply `MET`.
   * histogram name: `hmet` ; variable bins: `50 75 100 150 200 300 500 700 1000 1300`
-* Signal can have larger visible transverse activity.  
+* Signal can have larger visible transverse activity.  A variable typically used is `ST`, which equals to the sum of MET, pT of the first lepton and scalar sum of the pTs of all jets in the event.
+  * Add `ST` to the ADL file.  Add the following lines just before the event selection:
+  ~~~
+  define ST = MET + pT(leptons[0]) + fHT(jets)
+  ~~~
+  You can use the variable `ST` in the event selection.
+  * Add the `ST` histogram with name: `hST`; variable bins: `500 600 700 800 1000 1125 1500 1700 2000 2500 3000 4500`
+* Signal has decays to boosted W, Z and Higgs bosons. Boosted objects can be clustered into large radius jets. Signal can have a larger number of large radius jets.
+  * Define an `AK8jets` object in the ADL fille by adding the following object block to the object definitions section:
+  ~~~
+  object AK8jets
+    take FJet
+    select pT(FJet) > 200
+    select abs(Eta(FJet)) < 2.4
+    select m(FJet) > 60
+  ~~~
+  * Define an AK8jet multiplicity histogram with name: `hnak8` ; fixed bins: `8, 0, 8`
 
 ~~~
   histo hpttop , "top cand. pT (GeV)", 20, 50, 1550, pT(topcands[0])
@@ -134,7 +152,57 @@ pcands[0])
   histo hST, "ST (GeV)", 500 600 700 800 1000 1125 1500 1700 2000 2500 3000 4500, ST
   histo hnak8, "number of AK8 jets", 8, 0, 8, size(AK8jets)
 ~~~
+The complete ADL file after this step can be seen [here](https://raw.githubusercontent.com/ADL4HEP/ADLAnalysisDrafts/main/CMSODWS23-ttbartovlq/ttbartovlq_step2.adl).
 {: .solution}
+
+Rerun the ADL file with `CutLang` on the signal, and if possible, ttbar background events as above.  The ttbar output file `histoOut-ttbartovlq_ttjets.root` you downloaded above has all the histograms of this exercise, so you can optionally use that file to view the resulting histograms.  
+
+Go back to the Jupyter notebook. In the `histoinfos` list in the 4th cell, uncomment the names of the histograms you created.  Rerun the notebook to obtain signal-background comparison histograms.
+
+~~~
+* Which variables seem to have best discriminating power?
+* What kind of cuts can we impose?
+~~~
+
+### Defining and applying cuts
+
+Time to add some cuts and see if the signal becomes more visible.
+
+Let's make a new `region` named `optforvlqreint` that inherits from the `fourjettwob` region, and add the following cuts
+ * at least 1 AK8jet
+   * after this cut, add the following histograms:
+   ~~~
+   histo hak8j1pT , "AK8 jet 1 pT (GeV)", 20, 200, 1200, pT(AK8jets[0])
+   histo h2ak8j1pT , "AK8 jet 1 pT (GeV)", 200 300 400 500 600 700 1000 1500 2000, pT(AK8jets[0])
+   histo hak8j1m , "AK8 jet 1 mass (GeV)", 18, 50, 500, m(AK8jets[0])
+   histo h2ak8j1m , "AK8 jet 1 mass (GeV)", 60 100 150 200 300 400 500, m(AK8jets[0])
+   ~~~    
+ * at least 6 jets (regular jets)
+ * pT of the highest pT jet (with index 0) greater than 300 GeV.
+ * pT of the second highest pT jet (with index 1) greater than 150 GeV.
+ * pT of the third highest pT jet (with index 2) greater than 100 GeV.
+ * ST greater than 1500 GeV
+ * missing transverse energy greater than 75 GeV.
+   * after this cut, add the following histograms:
+   ~~~
+   histo h2mtop2 , "top cand. mass (GeV)", 50 100 150 200 300 500 700 1000 2000, m(topcands[0])
+   histo h2pttop2 , "top cand. pT (GeV)", 50 100 150 200 300 400 500 600 700 800 1000 1500 2000, pT(topcands[0])
+   histo hmet2 , "MET (GeV)", 50 75 100 150 200 300 500 700 1000 1300, MET
+   histo hST2, "ST (GeV)", 500 600 700 800 1000 1125 1500 1700 2000 2500 3000 4500, ST
+   histo h2ak8j1pT2 , "AK8 jet 1 pT (GeV)", 200 300 400 500 600 700 1000 1500 2000, pT(AK8jets[0])
+   histo h2ak8j1m2 , "AK8 jet 1 mass (GeV)", 60 100 150 200 250 300 400 500, m(AK8jets[0])
+   ~~~    
+
+The complete ADL file after this step can be seen [here](https://raw.githubusercontent.com/ADL4HEP/ADLAnalysisDrafts/main/CMSODWS23-ttbartovlq/ttbartovlq_step3.adl).
+{: .solution}
+
+Once again, run this ADL file and check the new histograms in Jupyter.  
+
+~~~
+DISCUSSION: The histograms after the last cut show the candidate variables for presenting the analysis result.  Which one would you pick?
+~~~
+
+### 
 
 {% include links.md %}
 
