@@ -60,11 +60,13 @@ ADL consists of blocks separating object, variable and event selection definitio
 
 ADL is designed with the goal to be self-describing, so especially for simple cases, one does not need to read syntax rules to understand an ADL description.  However if you are interested, the set of syntax rules can be found [here]( https://twiki.cern.ch/twiki/bin/view/LHCPhysics/ADL).
 
-### A physics analysis database
+## A physics analysis database
+>
+> ADL is a *standard*, which allows all analyses to be described in the same way.  Having access to many analyses written in the same way can help us understand them easier, learn their physics logic easily, and use them in our own studies.
+> 
+{: .callout}
 
-ADL is a *standard*, which allows all analyses to be described in the same way.  Having access to many analyses written in the same way can help us understand them easier, learn their physics logic easily, and use them in our own studies.
-
-All these make ADL an excellent medium for reinterpretation studies. 
+All these design principles make ADL an excellent medium for reinterpretation studies.
 
 ## What is CutLang?
 
