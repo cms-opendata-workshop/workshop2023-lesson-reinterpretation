@@ -1,7 +1,7 @@
 ---
 title: "Installing CutLang"
 teaching: 0
-exercises: 20
+exercises: 40
 questions:
 - "How do I access information about CutLang in general?"
 - "How do I install CutLang via Docker?"
@@ -20,7 +20,7 @@ keypoints:
 ---
 
 > ## Prerequsite: Familiarity with Docker
-> Please make sure that you have followed the [Docker pre-exercises](https://cms-opendata-workshop.github.io/workshop2023-lesson-docker/) and are familiarity with Docker containers.
+> Please make sure that you have followed the [Docker pre-exercises](https://cms-opendata-workshop.github.io/workshop2023-lesson-docker/) and are familiar with Docker containers.
 {: .prereq}
 
 Please make sure that you prepare the CutLang setup before the next exercise.
