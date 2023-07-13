@@ -29,7 +29,7 @@ In this exercise, we are going to take the top-antitop quark pair production ana
 
 Let's remember the top-antitop quark process, which was the signal in the ttbar analysis:
 
-![](../fig/ttbar_diagram.png){:width="15%"}.
+![](../fig/ttbar_diagram.png){:width="18%"}.
 
 Now let's see our new signal, the vector-like top quark T, in its pair production mode, and with its decays:
 
