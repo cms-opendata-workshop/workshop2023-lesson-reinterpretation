@@ -11,7 +11,7 @@ This lesson aims to explore reinterpretation and role of Open Data in it.  It in
 
 > ## Prerequisites
 >
-> * Please make sure that you have followed the [Docker pre-exercises](https://cms-opendata-workshop.github.io/workshop2023-lesson-docker/) and are familiar with Docker containers.
+> Please make sure that you have followed the [Docker pre-exercises](https://cms-opendata-workshop.github.io/workshop2023-lesson-docker/) and are familiar with Docker containers.
 {: .prereq}
 
 {% include links.md %}
