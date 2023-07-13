@@ -186,41 +186,43 @@ Go back to the Jupyter notebook. In the `histoinfos` list in the 4th cell, uncom
 
 Time to add some cuts and see if the signal becomes more visible.
 
-Let's make a new `region` named `optforvlqreint` that inherits from the `fourjettwob` region, and add the following cuts
- * at least 1 AK8jet
-   * after this cut, add the following histograms:
-   ~~~
-   histo hak8j1pT , "AK8 jet 1 pT (GeV)", 20, 200, 1200, pT(AK8jets[0])
-   histo h2ak8j1pT , "AK8 jet 1 pT (GeV)", 200 300 400 500 600 700 1000 1500 2000, pT(AK8jets[0])
-   histo hak8j1m , "AK8 jet 1 mass (GeV)", 18, 50, 500, m(AK8jets[0])
-   histo h2ak8j1m , "AK8 jet 1 mass (GeV)", 60 100 150 200 300 400 500, m(AK8jets[0])
-   ~~~    
- * at least 6 jets (regular jets)
- * pT of the highest pT jet (with index 0) greater than 300 GeV.
- * pT of the second highest pT jet (with index 1) greater than 150 GeV.
- * pT of the third highest pT jet (with index 2) greater than 100 GeV.
- * ST greater than 1500 GeV
- * missing transverse energy greater than 75 GeV.
-   * after this cut, add the following histograms:
-   ~~~
-   histo h2mtop2 , "top cand. mass (GeV)", 50 100 150 200 300 500 700 1000 2000, m(topcands[0])
-   histo h2pttop2 , "top cand. pT (GeV)", 50 100 150 200 300 400 500 600 700 800 1000 1500 2000, pT(topcands[0])
-   histo hmet2 , "MET (GeV)", 50 75 100 150 200 300 500 700 1000 1300, MET
-   histo hST2, "ST (GeV)", 500 600 700 800 1000 1125 1500 1700 2000 2500 3000 4500, ST
-   histo h2ak8j1pT2 , "AK8 jet 1 pT (GeV)", 200 300 400 500 600 700 1000 1500 2000, pT(AK8jets[0])
-   histo h2ak8j1m2 , "AK8 jet 1 mass (GeV)", 60 100 150 200 250 300 400 500, m(AK8jets[0])
-   ~~~    
-
-The complete ADL file after this step can be seen [here](https://raw.githubusercontent.com/ADL4HEP/ADLAnalysisDrafts/main/CMSODWS23-ttbartovlq/ttbartovlq_step3.adl).
-{: .solution}
+> ## Challenge: Apply cuts
+> Let's make a new `region` named `optforvlqreint` that inherits from the `fourjettwob` region, and add the following cuts
+> * at least 1 AK8jet
+>   * after this cut, add the following histograms:
+>   ~~~
+>   histo hak8j1pT , "AK8 jet 1 pT (GeV)", 20, 200, 1200, pT(AK8jets[0])
+>   histo h2ak8j1pT , "AK8 jet 1 pT (GeV)", 200 300 400 500 600 700 1000 1500 2000, pT(AK8jets[0])
+>   histo hak8j1m , "AK8 jet 1 mass (GeV)", 18, 50, 500, m(AK8jets[0])
+>   histo h2ak8j1m , "AK8 jet 1 mass (GeV)", 60 100 150 200 300 400 500, m(AK8jets[0])
+>   ~~~    
+> * at least 6 jets (regular jets)
+> * pT of the highest pT jet (with index 0) greater than 300 GeV.
+> * pT of the second highest pT jet (with index 1) greater than 150 GeV.
+> * pT of the third highest pT jet (with index 2) greater than 100 GeV.
+> * ST greater than 1500 GeV
+> * missing transverse energy greater than 75 GeV.
+>   * after this cut, add the following histograms:
+>   ~~~
+>   histo h2mtop2 , "top cand. mass (GeV)", 50 100 150 200 300 500 700 1000 2000, m(topcands[0])
+>   histo h2pttop2 , "top cand. pT (GeV)", 50 100 150 200 300 400 500 600 700 800 1000 1500 2000, pT(topcands[0])
+>   histo hmet2 , "MET (GeV)", 50 75 100 150 200 300 500 700 1000 1300, MET
+>   histo hST2, "ST (GeV)", 500 600 700 800 1000 1125 1500 1700 2000 2500 3000 4500, ST
+>   histo h2ak8j1pT2 , "AK8 jet 1 pT (GeV)", 200 300 400 500 600 700 1000 1500 2000, pT(AK8jets[0])
+>   histo h2ak8j1m2 , "AK8 jet 1 mass (GeV)", 60 100 150 200 250 300 400 500, m(AK8jets[0])
+>   ~~~    
+>
+> > ## Solution
+> > The complete ADL file after this step can be seen [here](https://raw.githubusercontent.com/ADL4HEP/ADLAnalysisDrafts/main/CMSODWS23-ttbartovlq/ttbartovlq_step3.adl).
+> {: .solution}
+{: .challenge}
 
 Once again, run this ADL file and check the new histograms in Jupyter.  
 
-~~~
-DISCUSSION:
-* The histograms after the last cut show the candidate variables for presenting the analysis result.  Which one would you pick?
-* Check the `cutflow` histogram in the `optforvlqreint` region. Do our cuts do a decent job in reducing the background while keeping as much signal as possible?
-~~~
+> ## Discussion
+> * The histograms after the last cut show the candidate variables for presenting the analysis result.  Which one would you pick?
+> * Check the `cutflow` histogram in the `optforvlqreint` region. Do our cuts do a decent job in reducing the background while keeping as much signal as possible?
+{: .discussion}
 
 ### What changed along the way?
 
@@ -252,6 +254,22 @@ The set of samples processed, their cross sections and unskimmed number of event
 Go to Jupyter again, and this time open the notebook ``.  This notebook is very similar to the previous one.  But this time, we plot all processes together, once again, with the correct weights.  Run the notebook and enjoy observing the final histograms.
 
 {: .language-bash}
+
+## The end -- or is it?
+
+Congratulations! You have finished the exercise. We hope you enjoyed this simple reinterprtation study with ADL/CutLang and found it useful. 
+We also hope you are inspired with ideas to start your own reinterpretation, or even new analysis design studies.
+
+> ## A dedicated VLQ analysis
+> In truth, CMS already has a dedicated analysis for vector-like quarks, which explore the boosted nature of decay products.
+> CMS-B2G-16-024: *Search for pair production of vector-like T and B quarks in single-lepton final states using boosted jet substructure in proton-proton collisions at sqrt(s) = 13 TeV*
+> arXiv link: ([arXiv:1706.03408](https://arxiv.org/abs/1706.03408)), publication reference: JHEP 11 (2017) 085 .
+> Some cuts applied here were inspired by that analysis.
+> In case you are curious, try [our lesson on implementing that analysis from the 2022 workshop](https://cms-opendata-workshop.github.io/workshop2022-lesson-run2-adlcl/).
+{: .callout}
+
+We are always happy to hear your suggestions and answer your questions!
+
 
 {% include links.md %}
 
