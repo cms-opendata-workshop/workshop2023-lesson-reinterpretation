@@ -91,25 +91,20 @@ How can we use open data for reinterpretation?
 
 Let's remember that exact reinterpretation only requires signal events.  Open data consists (will consist) of plenty of SM and BSM MC samples with CMS detector simulation.  There is a chance that our signal of interest is already available in open data.
 
-> ### Where is the actual need for open data in exact reinterpretation?
+> ## Where is the actual need for open data in exact reinterpretation?
 >
 > We may ask the following question, especially for BSM signals: If CMS has produced the signal events, were not they already used in a dedicated analysis? What situations may trigger the reuse of these events in the exact reinterpretation context?
 > 
-> ### Solution
-> 
-> * Different analyses are developed under different working groups.  Multiple analyses can end up addressing similar final states.  We may want to compare sensitivity for a signal in different analyses.
-> * Study of excesses: Various analyses observe excesses over the SM. As new excesses are seen, we may want to compare and combine with older analyses for a variety of signals.    
-> 
+> > ## Solution
+> > * Different analyses are developed under different working groups.  Multiple analyses can end up addressing similar final states.  We may want to compare sensitivity for a signal in different analyses.
+> > * Study of excesses: Various analyses observe excesses over the SM. As new excesses are seen, we may want to compare and combine with older analyses for a variety of signals.
+> {: .solution}
 {: .discussion}
 
 ### Open data for modified reinterpretation
 
 Here, we absolutely need open data, as we must reprocess collision data events with the optimized analysis in order to obtain the analysis result. Open data is the only source of collision data.  The large numbers of officially produced SM and BSM Monte Carlo events, simulated consistently with data would also be directly available for use.  
 
-> ## Where is the actual need for open data in exact reinterpretation?
->
-> Discussion questions.
-{: .discussion}
 
 {% include links.md %}
 
