@@ -81,7 +81,6 @@ For optimized reinterpretation studies, we need:
 > > * Mofify object selections, e.g. raise pT, use tighter isolation, ...
 > > * ...
 > >
-> {: .solution}
 {: .discussion}
 
 ## Open data for reinterpretation
@@ -101,7 +100,6 @@ Let's remember that exact reinterpretation only requires signal events.  Open da
 > > * Different analyses are developed under different working groups.  Multiple analyses can end up addressing similar final states.  We may want to compare sensitivity for a signal in different analyses.
 > > * Study of excesses: Various analyses observe excesses over the SM. As new excesses are seen, we may want to compare and combine with older analyses for a variety of signals.    
 > >
-> {: .solution}
 {: .discussion}
 
 ### Open data for modified reinterpretation
