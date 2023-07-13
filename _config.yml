@@ -9,15 +9,15 @@
 # cp: Carpentries (to use for instructor traning for instance)
 # incubator: Carpentries Incubator
 # cms: CMS trainings
-carpentry: "cms"
+carpentry: "lc"
 
 # Overall title for pages.
-title: "Lesson Title"
+title: "Reinterpretation with open data"
 
 # Life cycle stage of the lesson
 # See this page for more details: https://cdh.carpentries.org/the-lesson-life-cycle.html
 # Possible values: "pre-alpha", "alpha", "beta", "stable", "deprecated", "superseded"
-life_cycle: "pre-alpha"
+life_cycle: "stable"
 
 #------------------------------------------------------------
 # Generic settings (should not need to change).
