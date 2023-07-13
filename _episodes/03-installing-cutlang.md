@@ -16,7 +16,11 @@ keypoints:
 - "Running CLA is the only thing that a user must know in order to work with CutLang"
 ---
 
-Please make sure that you prepare the CutLang setup before the exercise.
+> ## Prerequsite: Familiarity with Docker
+> Please make sure that you have followed the [Docker pre-exercises](https://cms-opendata-workshop.github.io/workshop2023-lesson-docker/) and are familiarity with Docker containers.
+{: .prereq}
+
+Please make sure that you prepare the CutLang setup before the next exercise.
 
 ## Installing CutLang: introduction
 
@@ -30,7 +34,7 @@ In this exercise, we will use run CutLang via a docker container as described in
 
 ### Setup and execute
 
-We have prepared a CutLang docker container which functions similarly to [other Docker containers that work with CMS Open Data](https://cms-opendata-workshop.github.io/workshop2022-lesson-docker/).  The setup contains:
+We have prepared a CutLang docker container which functions similarly to [other Docker containers that work with CMS Open Data](https://cms-opendata-workshop.github.io/workshop2023-lesson-docker/).  The setup contains:
   * CutLang
   * ROOT
   * xrootd access to open data ntuples
@@ -49,33 +53,34 @@ docker run -p 8888:8888 -p 5901:5901 -p 6080:6080 -d -v $PWD/:/src --name CutLan
 ~~~
 {: .language-bash}
 
-* If you would like to re-run by mounting another directory, you should stop the container using
-~~~
-docker stop CutLang-root-vnc && docker container rm CutLang-root-vnc
-~~~
-{: .language-bash}
-and rerun with a different path as ```docker run -p 8888:8888 -p 5901:5901 -p 6080:6080 -d -v /path/you/want/:/src ...``` . For example:
-~~~
-docker run -p 8888:8888 -p 5901:5901 -p 6080:6080 -d -v ~/example_work_dir/:/src --name CutLang-root-vnc cutlang/cutlang-root-vnc:latest
-~~~
-{: .language-bash}
+> If you would like to re-run by mounting another directory, you should stop the container using
+> ~~~
+> docker stop CutLang-root-vnc && docker container rm CutLang-root-vnc
+> ~~~
+> {: .language-bash}
+> and rerun with a different path as ```docker run -p 8888:8888 -p 5901:5901 -p 6080:6080 -d -v /path/you/want/:/src ...``` . For example:
+> ~~~
+> docker run -p 8888:8888 -p 5901:5901 -p 6080:6080 -d -v ~/example_work_dir/:/src --name CutLang-root-vnc cutlang/cutlang-root-vnc:latest
+> ~~~
+> {: .language-bash}
 
 **For Windows:**
+
 ~~~
 docker run -p 8888:8888 -p 5901:5901 -p 6080:6080 -d -v %cd%/:/src --name CutLang-root-vnc cutlang/cutlang-root-vnc:latest
 ~~~
 {: .language-bash}
 
-* If you would like to re-run by mounting another directory, you should stop the container using
-~~~
-docker stop CutLang-root-vnc && docker container rm CutLang-root-vnc
-~~~
-{: .language-bash}
-and rerun with a different path as ```docker run -p 8888:8888 -p 5901:5901 -p 6080:6080 -d -v /path/you/want/:/src ...``` .  For example:
-~~~
-docker run -p 8888:8888 -p 5901:5901 -p 6080:6080 -d -v ~/example_work_dir/:/src --name CutLang-root-vnc cutlang/cutlang-root-vnc:latest
-~~~
-{: .language-bash}
+> If you would like to re-run by mounting another directory, you should stop the container using
+> ~~~
+> docker stop CutLang-root-vnc && docker container rm CutLang-root-vnc
+> ~~~
+> {: .language-bash}
+> and rerun with a different path as ```docker run -p 8888:8888 -p 5901:5901 -p 6080:6080 -d -v /path/you/want/:/src ...``` .  For example:
+> ~~~
+> docker run -p 8888:8888 -p 5901:5901 -p 6080:6080 -d -v ~/example_work_dir/:/src --name CutLang-root-vnc cutlang/cutlang-root-vnc:latest
+> ~~~
+> {: .language-bash}
 
 #### 3. Execute the container using
 
@@ -102,11 +107,18 @@ exit
 
 
 ### Update (if relevant)
+
 In case an update is necessary, you can perform the update as follows:
 ~~~
 docker pull cutlang/cutlang-root-vnc:latest
 docker stop CutLang-root-vnc && docker container rm CutLang-root-vnc
 docker run -p 8888:8888 -p 5901:5901 -p 6080:6080 -d -v $PWD/:/src --name CutLang-root-vnc cutlang/cutlang-root-vnc
+~~~
+{: .language-bash}
+
+Then execute, as usual:
+~~~
+docker exec -it CutLang-root-vnc bash
 ~~~
 {: .language-bash}
 
@@ -123,7 +135,7 @@ docker images -a | grep "cutlang-root-vnc" | awk '{print $3}' | xargs docker rmi
 ## Starting VNC and Jupyter
 ### Starting VNC
 
-* VNC works similarly as in the other containers for CMS Open Data (described [in this tutorial](https://cms-opendata-workshop.github.io/workshop2022-lesson-docker/03-docker-for-cms-opendata/index.html)).  Once in the CutLang container, type
+VNC works similarly as in the other containers for CMS Open Data (described [in this tutorial](https://cms-opendata-workshop.github.io/workshop2022-lesson-docker/03-docker-for-cms-opendata/index.html)).  Once in the CutLang container, type
 ~~~
 start_vnc
 ~~~
@@ -147,7 +159,6 @@ stop_vnc
 ~~~
 {: .language-bash}
 
-## Starting Jupyter
 ### Starting Jupyter
 
 We will do some plotting using pyROOT.  The plotting scripts can also be directly edited and run at commandline, but we will use Jupyter for this exercise.
