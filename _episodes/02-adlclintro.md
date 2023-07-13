@@ -1,5 +1,5 @@
 ---
-title: "Introduction"
+title: "Introducing ADL and CutLang"
 teaching: 15
 exercises: 0
 questions:
@@ -9,7 +9,7 @@ questions:
 objectives:
 - "Understand the concept of ADL and its main principles."
 - "Understand the distinction between using ADL and using a general purpose language for writing analyses."
-- "Understand the concept of runtime interpreter."
+- "Understand the concept of a runtime interpreter."
 keypoints:
 - "ADL is a declarative domain specific language (DSL) that describes the physics content of a HEP analysis in a standard and unambiguous way."
 - "ADL's purpose is to decouple the physics logic of analyses from technical operations, and make the physics logic more accessible."
@@ -36,11 +36,13 @@ The main reason behind this is that, when we write code using general purpose la
 
 We present a modern method which allows to decouple physics algorithm from the technical code and write analyses with a simple, self-describing syntax.  **Analysis Description Language (ADL)** is a HEP-specific analysis language developed with this purpose. Its main goal is to describe analyses in a more intuitive and physics-focused way. ADL is a transparant map from the input variables to the analysis selection.
 
-More formally, ADL is a declarative domain specific language (DSL) that describes the physics content of a HEP analysis in a standard and unambiguous way. 
-* External DSL: Custom-designed syntax to express analysis-specific concepts. Reflects conceptual reasoning of particle physicists.  
-* Declarative: Tells what to do, but not how to do it.
-* Human readable: Clear, self-describing syntax rules.
-* Designed for everyone: experimentalists, phenomenologists, students, interested public…
+> ## Formal definition of ADL
+> More formally, ADL is a declarative domain specific language (DSL) that describes the physics content of a HEP analysis in a standard and unambiguous way.
+> * External DSL: Custom-designed syntax to express analysis-specific concepts. Reflects conceptual reasoning of particle physicists.
+> * Declarative: Tells what to do, but not how to do it.
+> * Human readable: Clear, self-describing syntax rules.
+> * Designed for everyone: experimentalists, phenomenologists, students, interested public…
+{: .callout}
 
 ### Framework independence
 
@@ -68,7 +70,7 @@ All these make ADL an excellent medium for reinterpretation studies.
 
 Once an analysis is written it needs to be run on events.  This is achieved by **CutLang** , the runtime interpreter that reads and understands the ADL syntax and runs it on events.  A runtime interpreter does not require to be compiled.  The user only modifies the ADL description, and runs CutLang.  CutLang is also a framework which automatically handles many tedious tasks as reading input events, writing output histograms, etc.  CutLang can be run on various environments such as linux, mac, conda, docker, jupyter, etc.  
 
-In case you are interested to learn more on CutLang, please see the [CutLang github](https://github.com/unelg/CutLang) and references in the [cern.ch/adl](cern.ch/adl)) portal.
+In case you are interested to learn more about CutLang, please see the [CutLang github](https://github.com/unelg/CutLang) and references in the [cern.ch/adl](cern.ch/adl)) portal.
 
 {% include links.md %}
 
