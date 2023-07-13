@@ -6,14 +6,17 @@ questions:
 - "How do I access information about CutLang in general?"
 - "How do I install CutLang via Docker?"
 - "How do I test my installation?"
+- "Can I already run some ADL examples with CutLang?"
 objectives:
-- "Setup CutLang via Docker"
-- "Understand the most basic concepts about running CutLang"
-- "Perform a test run with CutLang on an open data POET ntuple and check the output"
+- "Setup CutLang via Docker."
+- "Understand the most basic concepts about running CutLang."
+- "Perform a test run with CutLang on an open data POET ntuple and check the output."
+- "Run a tutorial based on several ADL files in order to familiarize with the ADL syntax."
 keypoints:
 - "For up-to-date details for installing CutLang, the official documentation is the best bet."
 - "Make sure you were able to setup CutLang via Docker and run its hello-world example."
-- "Running CLA is the only thing that a user must know in order to work with CutLang"
+- "Running CLA is the only thing that a user must know in order to work with CutLang."
+- "The example ADL files in the `/CutLang/runs/tutorials/` directory is the best way to immediately familiarize with the ADL syntax."
 ---
 
 > ## Prerequsite: Familiarity with Docker
@@ -40,6 +43,19 @@ We have prepared a CutLang docker container which functions similarly to [other 
   * xrootd access to open data ntuples
   * VNC
   * Jupyter
+
+> ## If you have an apple M1/M2 chip follow these instructions first:
+> 
+> Do the setup:
+> * In finder, go to `/Applications/Utilities`
+> * right click on Terminal and get its info
+> * in the info panel, tick "Open using Rosetta"
+> * (re)start the terminal application.
+> Check your setup:
+> * Open a terminal and type `uname -a`
+> * Make sure you see `×86_64`
+> Once you have successfully done this setup, you should be able to work with the following instructions.
+{: .caution}
 
 #### 1. As a first step, make sure that you have [Docker desktop](https://www.docker.com/products/docker-desktop) installed.
 
