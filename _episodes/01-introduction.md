@@ -73,14 +73,14 @@ For optimized reinterpretation studies, we need:
 >
 > What kinds of small modifications can we make in an analysis to optimize its sensitivity to a different signal model? 
 >
-> > ### Solution
-> >
-> > * Modify / add some cuts in the event selection.
-> > * If there is a machine learning model for signal discrimination / extraction, retrain it for our signal model.
-> > * Change binning of the analysis variable.
-> > * Mofify object selections, e.g. raise pT, use tighter isolation, ...
-> > * ...
-> >
+> ### Solution
+> 
+> * Modify / add some cuts in the event selection.
+> * If there is a machine learning model for signal discrimination / extraction, retrain it for our signal model.
+> * Change binning of the analysis variable.
+> * Mofify object selections, e.g. raise pT, use tighter isolation, ...
+> * ...
+>
 {: .discussion}
 
 ## Open data for reinterpretation
@@ -95,11 +95,11 @@ Let's remember that exact reinterpretation only requires signal events.  Open da
 >
 > We may ask the following question, especially for BSM signals: If CMS has produced the signal events, were not they already used in a dedicated analysis? What situations may trigger the reuse of these events in the exact reinterpretation context?
 > 
-> > ### Solution
-> >
-> > * Different analyses are developed under different working groups.  Multiple analyses can end up addressing similar final states.  We may want to compare sensitivity for a signal in different analyses.
-> > * Study of excesses: Various analyses observe excesses over the SM. As new excesses are seen, we may want to compare and combine with older analyses for a variety of signals.    
-> >
+> ### Solution
+> 
+> * Different analyses are developed under different working groups.  Multiple analyses can end up addressing similar final states.  We may want to compare sensitivity for a signal in different analyses.
+> * Study of excesses: Various analyses observe excesses over the SM. As new excesses are seen, we may want to compare and combine with older analyses for a variety of signals.    
+> 
 {: .discussion}
 
 ### Open data for modified reinterpretation
