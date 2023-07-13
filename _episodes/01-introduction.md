@@ -1,13 +1,20 @@
 ---
-title: "What is reinterpretation?"
-teaching: 0
+title: "What is reinterpretation and what is the role of open data?"
+teaching: 20
 exercises: 0
 questions:
-- "Key question (FIXME)"
+- "What is reinterpretation?"
+- "What are exact and optimized reinterpretation?"
+- "What inputs are needed to perform reinterpretation?"
+- "What is the role of open data in reinterpretation?"
 objectives:
-- "First learning objective. (FIXME)"
+- "Learn the concepts of exact reinterpretation and optimized reinterpretation."
+- "Learn the inputs needed to perform different types of reinterpretation."
+- "Learn the role of open data in different types of reinterpretation."
 keypoints:
-- "First key point. Brief Answer to questions. (FIXME)"
+- "Reinterpretation is the comparison of experimental results with the expectations of a given a theoretical model which was not already interpreted by the original analysis publication."
+- "Reinterpretation requires running, and usually even rewriting the analysis. One can use the original analysis as it is (exact reinterpretation) or a modified version of it to optimize signal sensitivity (optimized reinterpretation.)"
+- "Open data is a great source of events, in particular for optimized reinterpretation studies."
 ---
 
 ## What is reinterpretation?
@@ -50,23 +57,23 @@ There is also the [RECAST framework](https://iris-hep.org/projects/recast.html) 
 
 This is the most commonly used reinterpretation method up to now.  But perhaps it is time we get more creative! 
 
-### Modified reinterpretation
+### Optimized reinterpretation
 
 What if you have a physics model whose final state is not explored by the existing analyses? 
 
 You may of course design a brand new analysis directly targeting your signal, run it over data and full background and signal MC. But developing a complete analysis from scratch with a sound methodology is time consuming and far from straightforward.  Another less daunting option could be to take an analysis that explores a final state as close as possible to your signal prediction, and slightly modify its selection criteria to get optimal sensitivity for your model.
 This option still requires processing the full set of data, background and signal samples. Yet it provides a more secure approach, as one can compare the consistency of event yield predictions between the original and the modified analyses to avoid errors.
 
-For such modified reinterpretation, we need:
+For optimized reinterpretation studies, we need:
 * **The full set of collision data:** Provided as open data.
 * **Background and signal samples:** MC for most SM processes and some BSM processes are available as open data samples. Other signal processes can be produced as in the case for exact reinterpretation.
 * **Analysis code:** We need analysis code that can process real collision data and MC samples.
 
-> ## What can we modify in an analysis?
+> ### What can we modify in an analysis?
 >
 > What kinds of small modifications can we make in an analysis to optimize its sensitivity to a different signal model? 
 >
-> > ## Solution
+> > ### Solution
 > >
 > > * Modify / add some cuts in the event selection.
 > > * If there is a machine learning model for signal discrimination / extraction, retrain it for our signal model.
@@ -75,7 +82,7 @@ For such modified reinterpretation, we need:
 > > * ...
 > >
 > {: .solution}
-{: .challenge}
+{: .discussion}
 
 ## Open data for reinterpretation
 
@@ -85,37 +92,21 @@ How can we use open data for reinterpretation?
 
 Let's remember that exact reinterpretation only requires signal events.  Open data consists (will consist) of plenty of SM and BSM MC samples with CMS detector simulation.  There is a chance that our signal of interest is already available in open data.
 
-> ## Where is the need?
+> ### Where is the actual need for open data in exact reinterpretation?
 >
 > We may ask the following question, especially for BSM signals: If CMS has produced the signal events, were not they already used in a dedicated analysis? What situations may trigger the reuse of these events in the exact reinterpretation context?
 > 
-> > ## Solution
+> > ### Solution
 > >
-> > * Different analyses are developed under different working groups.  Multiple analyses can end up addressing similar final states.  We may want to compare sensitivity in these.
-> > * Investigating excesses.
-> > * ...
+> > * Different analyses are developed under different working groups.  Multiple analyses can end up addressing similar final states.  We may want to compare sensitivity for a signal in different analyses.
+> > * Study of excesses: Various analyses observe excesses over the SM. As new excesses are seen, we may want to compare and combine with older analyses for a variety of signals.    
 > >
 > {: .solution}
 {: .discussion}
 
 ### Open data for modified reinterpretation
 
-...
-
-## Reimplementing analyses for reinterpretation with open data
-
-
-In most cases, we need to reimplement the analysis code for reintepretation. We may either start from 
-
-* Use the code from the analysis team: Some analysis teams provide their analysis code and framework.
-  * **Pros:** Access to complete analysis in full detail.
-  * **Cons:** Usually hard to decipher 
-Input data format may not be consistent (many analyses run on custom-made ntuples). 
-
-* Write your own code:
-  * **Pros:** You know exactly what is in the code.  Easy to manipulate.
-  * **Cons:**  
-
+Here, we absolutely need open data, as we must reprocess collision data events with the optimized analysis in order to obtain the analysis result. Open data is the only source of collision data.  The large numbers of officially produced SM and BSM Monte Carlo events, simulated consistently with data would also be directly available for use.  
 
 {% include links.md %}
 
