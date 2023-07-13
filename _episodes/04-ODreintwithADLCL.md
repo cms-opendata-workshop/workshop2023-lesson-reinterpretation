@@ -79,23 +79,26 @@ Now let's compare the top candidate mass from the signal with that of the `ttbar
 Event yields for various processes are usually provided with the analysis publication or in HepData, but in this case, we will get them ourselves.  We can run the above ADL file on some ttbar events:
 ~~~
 CLA root://eospublic.cern.ch//eos/opendata/cms/derived-data/POET/23-Jul-22/RunIIFall15MiniAODv2_TprimeTprime_M-800_TuneCUETP8M1_13TeV-madgraph-pythia8_flat.root POET -i ttbartovlq_step1.adl -e 400000
-mv histoOut-ttbartovlq_step1.root histoOut-ttbartovlq_ttjets.root
+mv histoOut-ttbartovlq_step1.root histoOut-ttbartovlq_SMttbar.root
 ~~~
 {: .language-bash}
 Or, to save time you can download the `ttbar` output file as
 
 ~~~
-wget .....
+wget https://www.dropbox.com/scl/fi/aptqbtwniuyj7les71al9/histoOut-ttbartovlq_SMttbar.root
 ~~~
 {: .language-bash}
 
-Next, let's go to `Jupyter` and open a notebook to read the output `ROOT` files and draw histograms.
+Next, let's go to Jupyter and open a notebook to read the output ROOT files and draw histograms.
 Assuming you are still in the default `src/` directory of the docker container, go to the `../CutLang/binder` directory and start Jupyter:
 ~~~
 cd ../CutLang/binder/
 CLA_Jupyter lab
 ~~~
 (remember that you need to copy the url address at the bottom to your browser).
+
+> TIP: To make it easy to switch between Jupyter and the container prompt, you can work with two separate containers.  You can do this by executing the container > again in a different terminal shell.
+
 Select the notebook `ROOTweightedcomparison.ipynb`.  This notebook retrieves the set of histograms you select and plots them after applying weights that normalize them to cross section times luminosity.  This means, the events in the histogram correspond to the event one would expect at the LHC.
 Overview the code and execute the cells. You will see histograms appearing.
 
@@ -234,7 +237,7 @@ Now that we have established a selection, it is time to see the performance and 
 To save time, we already ran all these samples with the latest ADL file. Download the output files under the `/src/` directory and unpack:  
 
 ~~~
-wget ....
+wget --output-document=ttbartovlq-histoOuts.tgz "https://www.dropbox.com/scl/fi/ifs463djzyah5rtud88nh/ttbartovlq-histoOuts.tgz?rlkey=wnn3xajzx41aih3uxwi9zlc4r&dl=0"
 tar -xzvf ttbartovlq-results.tgz
 ~~~
 The set of samples processed, their cross sections and unskimmed number of events are listed in the file `ttbartovlq-results/samples.txt`.
