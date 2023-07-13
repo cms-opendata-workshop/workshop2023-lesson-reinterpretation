@@ -106,5 +106,10 @@ Let's remember that exact reinterpretation only requires signal events.  Open da
 
 Here, we absolutely need open data, as we must reprocess collision data events with the optimized analysis in order to obtain the analysis result. Open data is the only source of collision data.  The large numbers of officially produced SM and BSM Monte Carlo events, simulated consistently with data would also be directly available for use.  
 
+> ## `.discussion`
+>
+> Discussion questions.
+{: .discussion}
+
 {% include links.md %}
 
