@@ -233,6 +233,10 @@ Let's compare ADL files from the (original ttbar analysis with the optimized ttb
 ~~~
 wget https://raw.githubusercontent.com/ADL4HEP/ADLAnalysisDrafts/main/CMSODWS23-ttbartovlq/ttbartovlq_step1.adl -P compareadls/
 wget https://raw.githubusercontent.com/ADL4HEP/ADLAnalysisDrafts/main/CMSODWS23-ttbartovlq/ttbartovlq_step3.adl -P compareadls/
+~~~
+{: .language-bash}
+then
+~~~
 diff compareadls/ttbartovlq_step1.adl compareadls/ttbartovlq_step3.adl 
 ~~~
 {: .language-bash}
