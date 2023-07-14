@@ -61,7 +61,7 @@ Open the ADL file and see
 * how the object definitions are written
 * how the top candidate is reconstructed
 * how the event selections are done for different regions and how the different regions are related
-* how the histograms are defined.
+* how the histograms are defined for fixed binwidth and variable binwidth cases.
 
 > ## Discussion
 > What do you think about describing the analysis in this manner?  Is it useful to see all the physics algorithm in one place?
@@ -84,12 +84,12 @@ CLA root://eospublic.cern.ch//eos/opendata/cms/derived-data/POET/23-Jul-22/RunII
 mv histoOut-ttbartovlq_step1.root histoOut-ttbartovlq_SMttbar.root
 ~~~
 {: .language-bash}
-Or alternatively, to save time you can download the `SMttbar` output file as
 
-~~~
-wget https://www.dropbox.com/scl/fi/aptqbtwniuyj7les71al9/histoOut-ttbartovlq_SMttbar.root
-~~~
-{: .language-bash}
+> If accessing `ttbar` events is too slow for your setup, you can alternatively download the `histoOut` file that we prepared:
+> ~~~
+> wget https://www.dropbox.com/scl/fi/aptqbtwniuyj7les71al9/histoOut-ttbartovlq_SMttbar.root
+> ~~~
+> {: .language-bash}
 
 Next, let's go to Jupyter and open a notebook to read the output ROOT files and draw histograms.
 Assuming you are still in the default `src/` directory of the docker container, go to the `../CutLang/binder` directory and start Jupyter:
