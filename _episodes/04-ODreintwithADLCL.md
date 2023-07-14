@@ -87,7 +87,7 @@ mv histoOut-ttbartovlq_step1.root histoOut-ttbartovlq_SMttbar.root
 
 > If accessing `ttbar` events is too slow for your setup, you can alternatively download the `histoOut` file that we prepared:
 > ~~~
-> wget https://www.dropbox.com/scl/fi/aptqbtwniuyj7les71al9/histoOut-ttbartovlq_SMttbar.root
+> wget --output-document=histoOut-ttbartovlq_SMttbar.root "https://www.dropbox.com/scl/fi/aptqbtwniuyj7les71al9/histoOut-ttbartovlq_SMttbar.root?rlkey=db5osn3i917g5zd4xc1u3meek&dl=0"
 > ~~~
 > {: .language-bash}
 
@@ -100,7 +100,7 @@ CLA_Jupyter lab
 (remember that you need to copy the url address at the bottom to your browser).
 
 > ## Tip for Jupyter
-> To make it easy to switch between Jupyter and the container prompt, you can work with two separate containers.  You can do this by executing the container > again in a different terminal shell by `docker exec -it CutLang-root-vnc bash`.
+> To make it easy to switch between Jupyter and the container prompt, you can work with two separate containers.  You can do this by executing the container again in a different terminal shell by `docker exec -it CutLang-root-vnc bash`.
 {: .callout}
 
 Select the notebook `ROOTweightedcomparison.ipynb`.  This notebook retrieves the set of histograms you select and plots them after applying weights that normalize them to cross section times luminosity.  This means, the events in the histogram correspond to the event one would expect at the LHC.
