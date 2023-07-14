@@ -80,7 +80,7 @@ Look at the text output and the cutflow shown there.  Which cuts reduce the even
 Now let's compare the top candidate mass from the signal with that of the `ttbar` process, which, in this case becomes our dominant background.
 Event yields for various processes are usually provided with the analysis publication or in HepData, but in this case, we will get them ourselves.  We can run the above ADL file on some ttbar events:
 ~~~
-CLA root://eospublic.cern.ch//eos/opendata/cms/derived-data/POET/23-Jul-22/RunIIFall15MiniAODv2_TprimeTprime_M-800_TuneCUETP8M1_13TeV-madgraph-pythia8_flat.root POET -i ttbartovlq_step1.adl -e 400000
+CLA root://eospublic.cern.ch//eos/opendata/cms/derived-data/POET/23-Jul-22/RunIIFall15MiniAODv2_TT_TuneCUETP8M1_13TeV-madgraph-pythia8_flat.root POET -i ttbartovlq_step1.adl -e 500000
 mv histoOut-ttbartovlq_step1.root histoOut-ttbartovlq_SMttbar.root
 ~~~
 {: .language-bash}
