@@ -252,7 +252,7 @@ To save time, we already ran all these samples with the latest ADL file. Downloa
 
 ~~~
 wget --output-document=ttbartovlq-histoOuts.tgz "https://www.dropbox.com/scl/fi/ifs463djzyah5rtud88nh/ttbartovlq-histoOuts.tgz?rlkey=wnn3xajzx41aih3uxwi9zlc4r&dl=0"
-tar -xzvf ttbartovlq-results.tgz
+tar -xzvf ttbartovlq-histoOuts.tgz
 ~~~
 The set of samples processed, their cross sections and unskimmed number of events are listed in the file `ttbartovlq-results/samples.txt`.
 
