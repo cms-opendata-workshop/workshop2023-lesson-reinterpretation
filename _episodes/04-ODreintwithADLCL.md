@@ -27,11 +27,11 @@ keypoints:
 
 In this exercise, we are going to take the top-antitop quark pair production analysis example you studied in the [simplified analysis example session](https://cms-opendata-workshop.github.io/workshop2023-lesson-ttbarljetsanalysis/) and use it to demonstrate a simple optimized reinterpretation case.  We will modify the analysis selection, so that the analysis becomes sensitive to a new physics scenario, namely, [vector-like quarks](https://lifeandphysics.com/2020/06/15/vector-like-quarks/).
 
-Let's remember the top-antitop quark process, which was the signal in the ttbar analysis:
+Let's remember the top-antitop quark process, which was the original signal in the ttbar analysis:
 
-![](../fig/ttbar_diagram.png){:width="18%"}.
+![](../fig/ttbar_diagram.png){:width="20%"}.
 
-Now let's see our new signal, the vector-like top quark T, in its pair production mode, and with its decays:
+Now let's see our new signal for reinterpretation, the vector-like top quark T, in its pair production mode, and with its decays:
 
 ![](../fig/VLQ_diagram.png){:width="75%"}.
 
@@ -144,7 +144,7 @@ Main difference is that the signal events have a larger object multiplicity and 
 >  define ST = MET + pT(leptons[0]) + fHT(jets)
 >  ~~~
 >  You can use the variable `ST` in the event selection.
->  * Add the `ST` histogram with name: `hST`; variable bins: `500 600 700 800 1000 1125 1500 1700 2000 2500 3000 4500`
+>   * Add the `ST` histogram with name: `hST`; variable bins: `500 600 700 800 1000 1125 1500 1700 2000 2500 3000 4500`
 > * Signal has decays to boosted W, Z and Higgs bosons. Boosted objects can be clustered into large radius jets. Signal can have a larger number of large radius jets.
 >   * Define an `AK8jets` object in the ADL fille by adding the following object block to the object definitions section:
 >  ~~~
@@ -189,7 +189,7 @@ Time to add some cuts and see if the signal becomes more visible.
 > ## Challenge: Apply cuts
 > Let's make a new `region` named `optforvlqreint` that inherits from the `fourjettwob` region, and add the following cuts
 > * at least 1 AK8jet
->   * after this cut, add the following histograms:
+> * after this cut, add the following histograms:
 >   ~~~
 >   histo hak8j1pT , "AK8 jet 1 pT (GeV)", 20, 200, 1200, pT(AK8jets[0])
 >   histo h2ak8j1pT , "AK8 jet 1 pT (GeV)", 200 300 400 500 600 700 1000 1500 2000, pT(AK8jets[0])
