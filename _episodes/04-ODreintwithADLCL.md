@@ -173,7 +173,8 @@ pcands[0])
 > {: .solution}
 {: .challenge}
 
-Rerun the ADL file with `CutLang` on the signal, and if possible, ttbar background events as above.  The ttbar output file `histoOut-ttbartovlq_ttjets.root` you downloaded above has all the histograms of this exercise, so you can optionally use that file to view the resulting histograms.  
+Rerun the ADL file with `CutLang` on the signal, and if possible, ttbar background events as you had done above.  
+> For ttbar events, if running is slow, you can continue using the `histoOut-ttbartovlq_ttjets.root` file.  It already contains all the histograms for this exercise, so it can be used to view the resulting histograms.  
 
 Go back to the Jupyter notebook. In the `histoinfos` list in the 4th cell, uncomment the names of the histograms you created.  Rerun the notebook to obtain signal-background comparison histograms.
 
