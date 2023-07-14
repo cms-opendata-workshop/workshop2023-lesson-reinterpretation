@@ -100,7 +100,7 @@ CLA_Jupyter lab
 (remember that you need to copy the url address at the bottom to your browser).
 
 > ## Tip for Jupyter
-> To make it easy to switch between Jupyter and the container prompt, you can work with two separate containers.  You can do this by executing the container > again in a different terminal shell.
+> To make it easy to switch between Jupyter and the container prompt, you can work with two separate containers.  You can do this by executing the container > again in a different terminal shell by `docker exec -it CutLang-root-vnc bash`.
 {: .callout}
 
 Select the notebook `ROOTweightedcomparison.ipynb`.  This notebook retrieves the set of histograms you select and plots them after applying weights that normalize them to cross section times luminosity.  This means, the events in the histogram correspond to the event one would expect at the LHC.
